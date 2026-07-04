@@ -46,7 +46,9 @@ Bindings are saved by the game itself (`Profile.DAT`), so you only need to do th
 
 ## Configuration
 
-All settings live in `PadWithin.ini`, next to `dinput8.dll`. The file is heavily commented — open it in any text editor. No ini present = defaults are used. Highlights:
+All settings live in `PadWithin.ini`, next to `dinput8.dll`. The file is heavily commented — open it in any text editor (Notepad works fine). Every setting is active out of the box at its default value; just edit the number after `=` for anything you want to change. No ini present = defaults are used.
+
+Highlights:
 
 - **`[Sensitivity]`** — separate deadzone for movement and camera, camera turn speed (as a percentage, 65 default), and `MoveMaxStickRange` / `CameraMaxStickRange` for calibrating a worn stick that never reaches full physical deflection.
 - **`[Axes]`** — invert any axis, swap which trigger drives which direction.
