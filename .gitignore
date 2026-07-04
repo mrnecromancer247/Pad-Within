@@ -1,0 +1,22 @@
+# Build artifacts from cl.exe / MSVC
+*.obj
+*.exp
+*.lib
+*.ilk
+*.pdb
+*.dll
+
+# CMake
+/build/
+CMakeCache.txt
+CMakeFiles/
+
+# Runtime-generated files (created next to dinput8.dll when the mod runs)
+PadWithin.log
+pop2_gamepad.log
+
+# Editor/OS junk
+.vs/
+*.user
+Thumbs.db
+.DS_Store
