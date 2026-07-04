@@ -1,6 +1,6 @@
 # Pad-Within
 
-A universal SDL2 gamepad proxy for **Prince of Persia: Warrior Within** (2005, GOG/Steam PC).
+A universal SDL2 gamepad proxy for **Prince of Persia: Warrior Within** (2004, GOG/Steam PC).
 
 Works with **any SDL2-supported controller** — DualSense, DualShock 4, Xbox pads, 8BitDo, and more — not just XInput devices. Fixes the game's broken native gamepad handling: the shared trigger axis, dead diagonals, and a nasty axis-binding bug that makes the Controls menu unable to tell your stick's vertical and horizontal axes apart.
 
@@ -12,6 +12,8 @@ Works with **any SDL2-supported controller** — DualSense, DualShock 4, Xbox pa
 - **Fixes axis mis-binding** — the in-game Controls menu can finally tell vertical and horizontal stick movement apart (see [Technical Notes](#technical-notes) for why this was broken).
 - **Fully configurable** via a plain-text ini: sensitivity, deadzone, stick range calibration for worn sticks, button remapping, axis inversion, and more — no recompiling needed.
 - **GOG and Steam compatible** (GOG's exe needs one extra one-time step, see below — both builds share identical code, confirmed byte-for-byte identical `.text`).
+
+> **Note:** only tested against the GOG and Steam builds. The Ubisoft Connect/Uplay version has **not** been tested — it may work, may need the same UPX-unpack step as GOG, or may not work at all. If you try it, feedback is welcome.
 
 ## Installation
 
