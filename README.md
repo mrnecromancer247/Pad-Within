@@ -19,7 +19,7 @@ Works with **any SDL2-supported controller** — DualSense, DualShock 4, Xbox pa
 
 1. Download the latest **Pad-Within** release from GitHub.
 2. Extract the files into the folder where the game's exe (`POP2.exe` / `pop2.exe`) lives.
-   - **GOG version only:** the GOG exe ships UPX-compressed, which prevents the proxy from loading. Run `tools\upx.bat` once from that folder first (it unpacks `pop2.exe` in place using the included `tools\upx.exe`). This is safe and one-time; back up the exe first if you want extra peace of mind. The Steam exe doesn't need this step.
+   - **GOG version only:** the GOG exe ships UPX-compressed, which prevents the proxy from loading. Run `upx.bat` once from that folder first (it unpacks `pop2.exe` in place using the included `upx.exe`). This is safe and one-time; back up the exe first if you want extra peace of mind. The Steam exe doesn't need this step.
 3. Turn off **Steam Input** for this game (Steam Input remaps your controller before the game ever sees it, which interferes with this proxy).
 4. Plug in your controller and launch the game. Open the in-game **Controls → Gamepad** settings and bind your controller using the layout below.
 
@@ -84,7 +84,7 @@ For anyone extending this or debugging a similar game, a summary of what actuall
 1. **Shared Z-axis for triggers.** Like many mid-2000s DirectInput games, WW reads L2/R2 off a single physical Z-axis, so pressing both simultaneously cancels out. This proxy reads them from SDL as two independent trigger axes.
 2. **The real bug: axis-binding detection, not axis data.** The Controls menu's "which axis moved" detection appears to grab the *first* axis that crosses a tiny threshold while scanning in a fixed order, rather than the *largest* deflection. Because no physical stick moves on a perfectly pure axis (a "pure" vertical push always leaks a hair of horizontal), that tiny cross-axis noise on X consistently wins the race before Y is ever seen — even though actual gameplay (once a binding exists) reads both axes correctly. The fix (`AxisSnapRatio` in the ini) snaps the minor axis to exactly zero during a dominant push, so the detector can only see the axis you're actually moving.
 3. **Investigated and ruled out along the way:** device enumeration offsets, DirectInput data-format layout, multiple simultaneously-created joystick devices, `Gamepads.DAT` VID/PID-based axis remapping (including spoofing as a known-good Xbox 360 identity), buffered vs. immediate input mode, `Poll`/`Acquire`/`SetEventNotification`, and a cached device-identity blob inside the game's own `Profile.DAT`. None of these were the actual cause — all preserved as commented-out/inactive hooks in `hook_di.cpp` for reference.
-4. **GOG vs. Steam.** Both ship the identical game binary — confirmed byte-identical `.text`/`.data` sections — but GOG's copy is UPX-compressed, which changes how Windows resolves `dinput8.dll` at load time and prevents this proxy from being picked up. Unpacking with UPX (`tools/upx.bat`) makes it byte-for-byte match the Steam binary's loader behavior.
+4. **GOG vs. Steam.** Both ship the identical game binary — confirmed byte-identical `.text`/`.data` sections — but GOG's copy is UPX-compressed, which changes how Windows resolves `dinput8.dll` at load time and prevents this proxy from being picked up. Unpacking with UPX (`upx.bat`) makes it byte-for-byte match the Steam binary's loader behavior.
 
 ## Credits
 
