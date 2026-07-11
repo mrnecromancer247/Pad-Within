@@ -22,7 +22,7 @@ struct Config
     // below. Camera (right stick) sensitivity is a percentage: 50 is the
     // formula's baseline (1.0x), shipped default is 65 (a bit faster).
     int   cameraSensitivity = 65;    // percent; 50 = 1.0x multiplier (baseline)
-    float moveDeadzone     = 0.15f;  // radial deadzone, left stick, 0..1
+    float moveDeadzone     = 0.25f;  // radial deadzone, left stick, 0..1
     float cameraDeadzone   = 0.15f;  // radial deadzone, right stick, 0..1
     // Outer calibration: if a worn/loose stick never quite reaches full
     // physical deflection, lower this below 100 (e.g. 90) so that deflection
@@ -35,7 +35,7 @@ struct Config
     // the other's, snap it to zero. Fixes WW's binding-detection screen always
     // grabbing X due to mechanical stick tolerance leaking a hair of X while
     // pushing "pure" vertical. 0 disables. Doesn't affect true diagonal input.
-    float axisSnapRatio    = 0.15f;
+    float axisSnapRatio    = 0.25f;
 
     // --- axis inversion ---
     bool invertMoveY   = false;
